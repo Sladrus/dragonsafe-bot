@@ -18,7 +18,7 @@ async function updateBalances(user_id, chat_id, body) {
     });
     return response.data;
   } catch (e) {
-    console.log(e?.response);
+    console.log(e);
   }
 }
 

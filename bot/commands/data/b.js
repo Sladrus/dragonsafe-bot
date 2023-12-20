@@ -64,6 +64,7 @@ const setBalance = async (bot, msg, args) => {
     comment,
     from: msg.from,
   });
+  console.log(balance);
   // if (!balance)
   //   return await bot.sendMessage(
   //     msg.chat.id,
