@@ -148,7 +148,7 @@ module.exports = async function balanceCommand(bot, msg, args) {
     if (group?.status !== 'ACTIVE')
       return await bot.sendMessage(
         chat_id,
-        `Актиивруйте чат с помощью /active`
+        `Активируйте чат с помощью /active`
       );
 
     if (args.length === 0) return await showBalance(bot, user_id, chat_id);
