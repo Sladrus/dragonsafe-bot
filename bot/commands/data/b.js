@@ -64,11 +64,11 @@ const setBalance = async (bot, msg, args) => {
     comment,
     from: msg.from,
   });
-  if (!balance)
-    return await bot.sendMessage(
-      msg.chat.id,
-      `С валютой ${currency} не работаем.\n\nДоступны следующие валюты для ввода/вывода с баланса:\n`
-    );
+  // if (!balance)
+  //   return await bot.sendMessage(
+  //     msg.chat.id,
+  //     `С валютой ${currency} не работаем.\n\nДоступны следующие валюты для ввода/вывода с баланса:\n`
+  //   );
   if (balance === undefined) return;
   console.log(balance);
   await bot.sendMessage(
