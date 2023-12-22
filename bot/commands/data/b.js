@@ -64,13 +64,20 @@ const setBalance = async (bot, msg, args) => {
     comment,
     from: msg.from,
   });
-  console.log(balance);
-  // if (!balance)
-  //   return await bot.sendMessage(
-  //     msg.chat.id,
-  //     `С валютой ${currency} не работаем.\n\nДоступны следующие валюты для ввода/вывода с баланса:\n`
-  //   );
   if (balance === undefined) return;
+
+  console.log(balance);
+  if (balance?.currencies) {
+    var symbols = balance?.currencies?.map(function (item) {
+      return item['currency'];
+    });
+    return await bot.sendMessage(
+      msg.chat.id,
+      `С валютой ${currency} не работаем.\n\nДоступны следующие валюты для ввода/вывода с баланса:\n${symbols?.join(
+        '\n'
+      )}`
+    );
+  }
   console.log(balance);
   await bot.sendMessage(
     msg.chat.id,
@@ -145,7 +152,6 @@ module.exports = async function balanceCommand(bot, msg, args) {
 
     const group = await getGroup(user_id, chat_id);
     if (!group) return await bot.sendMessage(chat_id, `Чат отсутствует`);
-
     if (group?.status !== 'ACTIVE')
       return await bot.sendMessage(
         chat_id,
