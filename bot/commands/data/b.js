@@ -38,14 +38,14 @@ const validateArgs = (args) => {
       return [null, null, null, null];
     } else {
     }
-    return [event, currency, evaluate(expression), comment];
+    return [event, currency, evaluate(expression), comment, expression];
   } catch (e) {
-    return [null, null, null, null];
+    return [null, null, null, null, null];
   }
 };
 
 const setBalance = async (bot, msg, args) => {
-  const [event, currency, value, comment] = validateArgs(args);
+  const [event, currency, value, comment, expression] = validateArgs(args);
   if (isNaN(Number(value))) {
     return await bot.sendMessage(
       msg.chat.id,
@@ -62,6 +62,7 @@ const setBalance = async (bot, msg, args) => {
     currency,
     value,
     comment,
+    expression,
     from: msg.from,
   });
   if (balance === undefined) return;
